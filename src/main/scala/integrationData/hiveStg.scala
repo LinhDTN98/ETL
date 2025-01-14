@@ -37,6 +37,7 @@ object hiveStg {
     // 1.Check file table in datalake exists
     // 2.read file save into table
 
+
     val arr_listFieldKey = listFieldKey.split(",")
 
     val pathHadoop = s"/$folder_data/$comp/$schema/$data_type/$tbl_name"
@@ -50,7 +51,7 @@ object hiveStg {
 
       files.flatMap {
         case file if file.isDirectory => listFilesRecursively(file.getPath) // Recurse into subdirectories
-        case file if file.isFile => Array(file) // Collect files
+        case file if file.isFile => Array(file) // Collect files in hdfs repository
       }
     }
 
